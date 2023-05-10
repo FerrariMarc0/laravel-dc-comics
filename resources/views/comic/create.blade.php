@@ -13,8 +13,8 @@
 <form action="{{route('comics.store')}}" method="POST">
     @csrf
     <div class="mb-3">
-        <label for="src" class="form-label">Immagine</label>
-        <input type="text" class="form-control" id="src" name="src">
+        <label for="thumb" class="form-label">Immagine</label>
+        <input type="text" class="form-control" id="thumb" name="thumb">
     </div>
     <div class="mb-3">
         <label for="titolo" class="form-label">Titolo</label>
@@ -41,8 +41,16 @@
         <textarea class="form-control" id="description" rows="3" name="description"></textarea>
     </div>
     <div class="mb-3">
-        <label for="author" class="form-label">Autore</label>
-        <input type="text" class="form-control" id="author" name="author">
+        <label for="artists" class="form-label">Artisti</label>
+        <input type="text" class="form-control" id="artists" name="artists">
+    </div>
+    <div class="mb-3">
+        <label for="writers" class="form-label">Autore</label>
+        <input type="text" class="form-control" id="writers" name="writers">
+    </div>
+    <div class="mb-3">
+        <label for="sale_date" class="form-label">Data uscita</label>
+        <input type="text" class="form-control" id="sale_date" name="sale_date">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

@@ -7,7 +7,7 @@
 @section('main')
 
 <div class="container">
-    <a href="{{route('comic.create')}}">Crea un nuovo elemento</a>
+    <a href="{{route('comics.create')}}">Crea un nuovo elemento</a>
     <table class="table">
     <thead>
         <tr>
