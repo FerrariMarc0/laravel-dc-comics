@@ -17,6 +17,9 @@ class ComicsTableSeeder extends Seeder
         $comics = config('db');
 
         foreach($comics as $comic){
+
+            $newComic = new Comic();
+
             $newComic->title = $comic['title'];
             $newComic->description = $comic['description'];
             $newComic->thumb = $comic['thumb'];
@@ -24,8 +27,8 @@ class ComicsTableSeeder extends Seeder
             $newComic->series = $comic['series'];
             $newComic->sale_date = $comic['sale_date'];
             $newComic->type = $comic['type'];
-            $newComic->artists = $comic['artists'];
-            $newComic->writers = $comic['writers'];
+            $newComic->artists = implode(',', $comic['artists']);
+            $newComic->writers = implode(',', $comic['writers']);
             $newComic->save();
         }
     }
