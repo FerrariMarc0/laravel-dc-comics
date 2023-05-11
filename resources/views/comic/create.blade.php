@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    <span>Inserisci Nuovo elemento</span>
+Inserisci
 @endsection
 
 @section('main')
-
+<h1>Inserisci Nuovo elemento</h1>
 <div class="container">
     <a href="{{route('comics.index')}}">Torna alla lista</a>
 </div>

@@ -29,7 +29,17 @@
             <td>{{$comic->type}}</td>
             <td>{{$comic->writers}}</td>
             <td>{{$comic->price}}</td>
-            <td><a href="{{route('comics.show', $comic->id)}}">Dettagli</a></td>
+            <td>
+                <a href="{{route('comics.show', $comic->id)}}">Dettagli</a>
+                <a href="{{route('comics.edit', $comic->id)}}">Modifica</a>
+                <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('E SE POI TE NE PENTI??')">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
         @endforeach
     </tbody>
