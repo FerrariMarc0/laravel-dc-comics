@@ -5,11 +5,9 @@ Modifica
 @endsection
 
 @section('main')
-<h1 class="text-center">Modifica elemento: {{$comic->title}}</h1>
-
+<a href="{{ route('comics.index') }}">Torna alla lista</a>
 <div class="container">
-    <a href="{{ route('comics.index') }}">Torna alla lista</a>
-</div>
+    <h1 class="text-center text-primary text-uppercase">Modifica elemento: {{$comic->title}}</h1>
 
 <form action="{{ route('comics.update', $comic) }}" method="POST">
     @csrf
@@ -47,7 +45,7 @@ Modifica
         <input type="text" class="form-control" id="artists" name="artists" value="{{$comic->artists}}">
     </div>
     <div class="mb-3">
-        <label for="writers" class="form-label">Autore</label>
+        <label for="writers" class="form-label">Autori</label>
         <input type="text" class="form-control" id="writers" name="writers" value="{{$comic->writers}}">
     </div>
     <div class="mb-3">
@@ -57,4 +55,5 @@ Modifica
 
     <button type="submit" class="btn btn-primary">Salva modifiche</button>
 </form>
+</div>
 @endsection

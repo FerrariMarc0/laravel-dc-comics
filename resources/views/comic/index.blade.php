@@ -6,9 +6,9 @@
 
 @section('main')
 
-<div class="container">
-    <a href="{{route('comics.create')}}">Crea un nuovo elemento</a>
-    <table class="table">
+<div class="container mt-5">
+    <a href="{{route('comics.create')}}">Aggiungi un elemento</a>
+    <table class="table my-5 align-middle">
     <thead>
         <tr>
             <th scope="col">Titolo</th>
@@ -29,14 +29,14 @@
             <td>{{$comic->type}}</td>
             <td>{{$comic->writers}}</td>
             <td>{{$comic->price}}</td>
-            <td>
+            <td class="d-flex flex-column gap-3">
                 <a href="{{route('comics.show', $comic->id)}}">Dettagli</a>
                 <a href="{{route('comics.edit', $comic->id)}}">Modifica</a>
                 <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('E SE POI TE NE PENTI??')">
-                        <i class="fa fa-trash"></i>
+                        <i class="fa fa-trash">Elimina</i>
                     </button>
                 </form>
             </td>
