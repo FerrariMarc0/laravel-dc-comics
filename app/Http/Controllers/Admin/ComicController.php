@@ -38,14 +38,15 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:100',
+            'title' => 'required|max:100',
             'description' => 'required',
             'thumb' => 'url|nullable|ends_with:png,jpg,webp,svg,ico',
             'price' => 'required|max:10',
             'series' => 'required|max:50',
             'sale_date' => 'required|date',
-            'type' => ['max:20|required',
-            Rule::in(['comic book', 'graphic novel'])
+            'type' => ['max:20',
+            Rule::in(['comic book', 'graphic novel']),
+            'required'
             ],
             'artists' => 'required',
             'writers' => 'required'
