@@ -7,7 +7,7 @@
     <title>@yield('title', 'Welcome')</title>
     @vite('resources/scss/app.scss')
 </head>
-<body>
+<body class="bg-dark opacity-100">
     @include('partials.header')
 
     <main>

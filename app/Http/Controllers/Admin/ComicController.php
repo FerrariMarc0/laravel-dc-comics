@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ComicController extends Controller
 {
@@ -36,6 +37,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:100',
+            'description' => 'required',
+            'thumb' => 'url|nullable|ends_with:png,jpg,webp,svg,ico',
+            'price' => 'required|max:10',
+            'series' => 'required|max:50',
+            'sale_date' => 'required|date',
+            'type' => ['max:20|required',
+            Rule::in(['comic book', 'graphic novel'])
+            ],
+            'artists' => 'required',
+            'writers' => 'required'
+        ]);
+
         //salvataggio dati da form
         $data = $request->all();
         //creazione modello pasta

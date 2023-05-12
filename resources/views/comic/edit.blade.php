@@ -5,7 +5,7 @@ Modifica
 @endsection
 
 @section('main')
-<a href="{{ route('comics.index') }}">Torna alla lista</a>
+<a href="{{ route('comics.index') }}" class="m-5">Torna alla lista</a>
 <div class="container">
     <h1 class="text-center text-primary text-uppercase">Modifica elemento: {{$comic->title}}</h1>
 
@@ -30,7 +30,7 @@ Modifica
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">Prezzo</label>
-        <input type="number" class="form-control" id="price" name="price" value="{{$comic->price}}">
+        <input type="text" class="form-control" id="price" name="price" value="{{$comic->price}}">
     </div>
     <div class="mb-3">
         <label for="series" class="form-label">Serie</label>
