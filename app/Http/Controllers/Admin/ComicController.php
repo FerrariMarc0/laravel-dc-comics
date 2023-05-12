@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\ComicRequest;
+
 
 class ComicController extends Controller
 {
@@ -35,29 +35,30 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
-        $request->validate([
+        $request->validated();
+        /* $request->validated([
             'title' => 'required|max:100',
             'description' => 'required',
             'thumb' => 'url|nullable|ends_with:png,jpg,webp,svg,ico',
             'price' => 'required|max:10',
             'series' => 'required|max:50',
             'sale_date' => 'required|date',
-            'type' => ['max:20',
-            Rule::in(['comic book', 'graphic novel']),
-            'required'
+            'type' => ['required',
+            Rule::in(['comic book', 'graphic novel'])
             ],
             'artists' => 'required',
             'writers' => 'required'
-        ]);
+        ]); */
+
 
         //salvataggio dati da form
         $data = $request->all();
         //creazione modello pasta
         $newComic = new Comic();
         //mapping
-        $newComic->title = $data['title'];
+        /* $newComic->title = $data['title'];
         $newComic->description = $data['description'];
         $newComic->thumb = $data['thumb'];
         $newComic->price = $data['price'];
@@ -65,7 +66,9 @@ class ComicController extends Controller
         $newComic->sale_date = $data['sale_date'];
         $newComic->type = $data['type'];
         $newComic->artists = $data['artists'];
-        $newComic->writers = $data['writers'];
+        $newComic->writers = $data['writers']; */
+
+        $newComic->fill($data);
         //salvataggio dati in db
         $newComic->save();
 
@@ -101,8 +104,26 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
+
+        $request->validated();
+
+        /* $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'required',
+            'thumb' => 'url|nullable|ends_with:png,jpg,webp,svg,ico',
+            'price' => 'required|max:10',
+            'series' => 'required|max:50',
+            'sale_date' => 'required|date',
+            'type' => ['required',
+            Rule::in(['comic book', 'graphic novel'])
+            ],
+            'artists' => 'required',
+            'writers' => 'required'
+        ]); */
+
+
         $data = $request->all();
 
         //mapping
