@@ -40,8 +40,15 @@ class ComicRequest extends FormRequest
     }
 
     public function messages(){
-        return{
+        return [
 
-        }
+            'required' => 'Il campo non può essere vuoto',
+            'thumb.url' => 'Inserire un URL valido',
+            'thumb.ends_with' => 'Specificare il tipo di file (es: .png - .jpg - .webp - .svg)',
+            'title.max' => 'Massimo 100 caratteri',
+            'price.max' => 'Massimo 10 caratteri',
+            'series.max' => 'Massimo 50 caratteri',
+            'sale_date.date' => 'Inserire un formato valido (YYYY/MM/DD)'
+        ];
     }
 }
